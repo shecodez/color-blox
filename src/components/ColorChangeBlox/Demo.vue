@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { colors } from '@/utils/colors';
+import { colors, Color } from '@/utils/colors';
 
 import Grid from '@/components/Grid.vue';
 import Blox from '@/components/Blox.vue';
+
+type Blox = { id: string | number; color: Color | string };
 
 // 2 rows x 4 cols (3x5 lines)
 const grid1 = ref([
@@ -27,8 +29,8 @@ function getRandomColor() {
 }
 
 function shuffleColors() {
-  grid1.value.map((x) => (x.color = getRandomColor()));
-  grid2.value.map((x) => (x.color = getRandomColor()));
+  grid1.value.map((x: Blox) => (x.color = getRandomColor()));
+  grid2.value.map((x: Blox) => (x.color = getRandomColor()));
 }
 </script>
 
